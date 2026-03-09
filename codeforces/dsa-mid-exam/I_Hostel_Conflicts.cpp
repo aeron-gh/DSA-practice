@@ -1,3 +1,7 @@
+// Contest: https://codeforces.com/contests/677363  mid-term-exam
+// Problem: I
+// Link: https://codeforces.com/gym/677363/problem/I
+
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -1,3 +1,7 @@
+// Contest: https://codeforces.com/contests/677363  mid-term-exam 09/03/26
+// Problem: B
+// Link: https://codeforces.com/gym/677363/problem/B
+
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
