@@ -22,8 +22,8 @@ int main()
             }
         }
     }
-    
-    vector<int>pre(n + 1);
+
+    vector<int> pre(n + 1);
     int foo = 0;
     for (int i = 0; i <= n; i++)
     {
@@ -37,15 +37,8 @@ int main()
     {
         int l, r;
         cin >> l >> r;
-        
-        if (l > 0)
-        {
-            cout << pre[r] - pre[l - 1] << endl;
-        }
-        else
-        {
-            cout << pre[r] << endl;
-        }
+
+        cout << pre[r] - pre[l - 1] << endl;
     }
 
     return 0;

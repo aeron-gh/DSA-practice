@@ -1,33 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node {
+struct Node
+{
     int val;
-    Node* next;
+    Node *next;
     Node(int v) : val(v), next(nullptr) {}
 };
 
-class LinkedList {
+class LinkedList
+{
 public:
-    Node* head;
+    Node *head;
 
     LinkedList() : head(nullptr) {}
 
-    void build(int n) {
-        Node* tail = nullptr;
-        for (int i = 0; i < n; i++) {
+    void build(int n)
+    {
+        Node *tail = nullptr;
+        for (int i = 0; i < n; i++)
+        {
             int x;
             cin >> x;
-            Node* node = new Node(x);
-            if (!head) head = tail = node;
-            else tail->next = node, tail = node;
+            Node *node = new Node(x);
+            if (!head)
+                head = tail = node;
+            else
+                tail->next = node, tail = node;
         }
     }
 
-    ~LinkedList() {
-        Node* cur = head;
-        while (cur) {
-            Node* nxt = cur->next;
+    ~LinkedList()
+    {
+        Node *cur = head;
+        while (cur)
+        {
+            Node *nxt = cur->next;
             delete cur;
             cur = nxt;
         }
@@ -37,9 +45,34 @@ public:
 /*
     Implement only the function below.
 */
-int countTrailingOnes(Node* head);
+int countTrailingOnes(Node *head)
+{
+    string str;
+    auto ptr = head;
+    while (ptr != NULL)
+    {
+        char a = ptr->val + '0';
+        str += a;
+        ptr = ptr->next;
+    }
 
-int main() {
+    int cnt = 0;
+    for (int i = str.size() - 1; i >= 0; i--)
+    {
+        if (str[i] == '1')
+        {
+            cnt++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return cnt;
+}
+
+int main()
+{
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
