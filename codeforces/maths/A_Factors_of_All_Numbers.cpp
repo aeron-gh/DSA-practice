@@ -8,6 +8,7 @@ int main()
     int n;
     cin >> n;
     vector<int> vec[n + 1];
+    // tc n * log (n)
     for (int i = 1; i <= n; i++)
     {
         for (int j = i; j <= n; j += i)

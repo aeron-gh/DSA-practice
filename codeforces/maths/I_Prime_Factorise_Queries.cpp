@@ -29,7 +29,6 @@ signed main()
     cin >> q;
     while (q--)
     {
-
         int no;
         cin >> no;
         map<int, int> mp;

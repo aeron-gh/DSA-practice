@@ -11,7 +11,6 @@ signed main()
     map<int, int> mp;
     for (int i = 2; i * i <= n; i++)
     {
-
         while (n % i == 0)
         {
             mp[i]++;
@@ -28,7 +27,5 @@ signed main()
         cout << a.first << '^' << a.second << " ";
     }
  
-
-    
     return 0;
 }

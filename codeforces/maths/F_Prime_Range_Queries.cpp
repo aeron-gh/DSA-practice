@@ -11,7 +11,7 @@ int main()
     vector<int> vec(n + 1, 1);
     vec[0] = 0;
     vec[1] = 0;
-
+    // sieve
     for (int i = 2; i * i <= n; i++)
     {
         if (vec[i] == 1)
