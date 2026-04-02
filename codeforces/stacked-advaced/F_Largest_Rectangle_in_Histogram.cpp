@@ -50,7 +50,6 @@ vector<int> nextSmallestLeft(int arr[], int n)
     }
     return ans;
 }
-
 signed main()
 {
     ios::sync_with_stdio(false);
