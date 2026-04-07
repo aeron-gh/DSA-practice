@@ -45,7 +45,7 @@ signed main()
     pr.push_back({cnt, 0});
     int ans = cnt;
     int st = 0;
-    int en = k - 1;
+    // int en = k - 1;
 
     for (int i = k; i < n; i++)
     {
@@ -57,21 +57,31 @@ signed main()
         {
             cnt--;
         }
-        pr.push_back({cnt, i - k + 1});
-        ans = max(cnt, ans);
-    }
-
-    for (int i = 0; i < pr.size(); i++)
-    {
-        if (pr[i].first == ans)
+        if (cnt > ans)
         {
-            for (int j = pr[i].second; j < pr[i].second + k; j++)
-            {
-                cout << arr[j] << " ";
-            }
-            return 0;
+            ans = cnt;
+            st = i - k + 1;
+            // en = st + en;
         }
+        // pr.push_back({cnt, i - k + 1});
+        // ans = max(cnt, ans);
     }
 
+    // for (int i = 0; i < pr.size(); i++)
+    // {
+    //     if (pr[i].first == ans)
+    //     {
+    //         for (int j = pr[i].second; j < pr[i].second + k; j++)
+    //         {
+    //             cout << arr[j] << " ";
+    //         }
+    //         return 0;
+    //     }
+    // }
+
+    for (int i = st; i < st + k; i++)
+    {
+        cout << arr[i] << " ";
+    }
     return 0;
 }
