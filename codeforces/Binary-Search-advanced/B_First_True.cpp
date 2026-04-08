@@ -1,11 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
+#define endl "\n"
+
+//dont use "/n"(or use: "/n" with cout.flush()) and "fast io" in interactive problem
 
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
+
     int n;
     cin >> n;
     int l = 1;

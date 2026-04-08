@@ -11,12 +11,14 @@ signed main()
     int n;
     cin >> n;
     int l = 0;
-    int r = n;
+    int r = 1e9;
+    
     int ans = 0;
     while (l <= r)
     {
         int mid = l + (r - l) / 2;
-        if (mid == 0 || mid <= (n / mid))
+
+        if (mid*mid <= n)
         {
             ans = mid;
             l = mid + 1;
@@ -26,6 +28,7 @@ signed main()
             r = mid - 1;
         }
     }
+
     cout << ans;
 
     return 0;
