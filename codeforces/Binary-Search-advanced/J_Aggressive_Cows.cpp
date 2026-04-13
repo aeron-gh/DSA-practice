@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define int long long
+
 bool possible(vector<int> arr, int mid, int k)
 {
     int a = arr[0];
@@ -15,12 +17,11 @@ bool possible(vector<int> arr, int mid, int k)
             k--;
         }
     }
-
     return k <= 0;
     // return cnt >= k;
 }
-  
-int main()
+
+signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -32,25 +33,10 @@ int main()
     {
         cin >> arr[i];
     }
-    int l = 0;
-    int r = 0;
-    int a = INT_MIN;
-    int b = INT_MAX;
-    for (int i = 0; i < n; i++)
-    {
-        if (a < arr[i])
-        {
-            a = arr[i];
-        }
-        if (b > arr[i])
-        {
-            b = arr[i];
-        }
-    }
-
-    r = abs(a - b);
-
     sort(arr.begin(), arr.end());
+    int l = 0;
+    int r = arr[n - 1] - arr[0];
+
     int ans = 0;
     // mid => min dis bw two
     while (l <= r)
@@ -66,6 +52,7 @@ int main()
             r = mid - 1;
         }
     }
+
     cout << ans;
 
     return 0;

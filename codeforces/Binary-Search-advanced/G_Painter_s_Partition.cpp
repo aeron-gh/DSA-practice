@@ -15,7 +15,8 @@ bool possible(vector<int> arr, int mid, int k)
             a = arr[i];
             p++;
         }
-    }    
+    }
+    
     return p <= k;
 }
 
@@ -26,8 +27,7 @@ signed main()
     int n, k;
     cin >> n >> k;
     vector<int> arr(n);
-    for (int i =
-         0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
