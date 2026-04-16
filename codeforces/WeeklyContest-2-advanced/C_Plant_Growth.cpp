@@ -14,23 +14,41 @@ signed main()
         cin >> arr[i];
     }
     stack<int> sta;
-    int ans = 0;
+    vector<int> ans(n), grand(n);
     for (int i = n - 1; i >= 0; i--)
     {
         while (!sta.empty() && arr[sta.top()] <= arr[i])
         {
             sta.pop();
         }
-        if (sta.size() >= 2)
+        // if (sta.size() >= 2)
+        // {
+        //     ans++;
+        // }
+        if (sta.empty())
         {
-            ans++;
+            ans[i] = -1;
+            grand[i] = -1;
+        }
+        else
+        {
+            ans[i] = sta.top();
+            grand[i] = ans[ans[i]];
         }
         sta.push(i);
     }
-    cout << ans << endl;
+
+    int cnt = 0;
+    for (auto i : grand)
+    {
+        if (i != -1)
+            cnt++;
+    }
+
+    cout << cnt;
+
     return 0;
 }
-
 
 
 // #include <bits/stdc++.h>
@@ -41,7 +59,6 @@ signed main()
 // {
 //     ios::sync_with_stdio(false);
 //     cin.tie(NULL);
-
 //     int n;
 //     cin >> n;
 //     int arr[n];
@@ -49,7 +66,6 @@ signed main()
 //     {
 //         cin >> arr[i];
 //     }
-
 //     stack<int> sta;
 //     vector<int> ans(n);
 //     vector<int> ans2(n);
