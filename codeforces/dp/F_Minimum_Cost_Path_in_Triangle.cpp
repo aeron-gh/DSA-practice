@@ -1,49 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 #define int long long
 
+
 int f(int x, int y, vector<vector<int>> &vec, int n, vector<vector<int>> &dp)
-{
+{ // tell min sum to go last
+
     if (x == n - 1)
     {
         return vec[x][y];
     }
-
-    if (dp[x][y] != INT64_MIN)
+    
+    if (dp[x][y] != -1)
     {
         return dp[x][y];
     }
-
-    int c = INT64_MIN;
     int a = vec[x][y] + f(x + 1, y, vec, n, dp);
     int b = vec[x][y] + f(x + 1, y + 1, vec, n, dp);
-    if (y - 1 >= 0)
-    {
-        c = vec[x][y] + f(x + 1, y - 1, vec, n, dp);
-    }
 
-    int d = max(a, b);
-    return dp[x][y] = max(c, d);
+    return dp[x][y] = min(a, b);
 }
 
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-
     int n;
     cin >> n;
-    vector<vector<int>> dp(n);
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < i + 1; j++)
-        {
-             dp[i].push_back(INT64_MIN);
-        }
-    }
-
     vector<vector<int>> vec(n);
+    vector<vector<int>> dp(n);
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < i + 1; j++)
@@ -54,6 +40,14 @@ signed main()
         }
     }
 
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < i + 1; j++)
+        {
+            dp[i].push_back(-1);
+        }
+    }
     cout << f(0, 0, vec, n, dp);
+
     return 0;
 }

@@ -50,14 +50,9 @@ int countConsistentSegments(Node *head, int k)
         vec.push_back(ptr->val);
         ptr = ptr->next;
     }
-    // for (int i = 1; i < k - 1; i++)
-    // {
-    //     if (vec[i] == vec[i - 1])
-    //     {   
-    //         cnt++;
-    //     }
+    // for(int i = 0; i < vec.size();i++){
+    //     cout << vec[i] << " ";
     // }
-
     for (int i = k - 1; i < vec.size(); i++)
     {
         if (vec[i - (k -1)] == vec[i])
