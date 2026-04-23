@@ -14,6 +14,7 @@ int f(int pos, int arr[], int n)
     {
         return dp[pos];
     }
+                                                                        
     int a = abs(arr[pos + 1] - arr[pos]) + f(pos + 1, arr, n);
     int b = INT64_MAX;
     if (pos + 2 <= n - 1)
