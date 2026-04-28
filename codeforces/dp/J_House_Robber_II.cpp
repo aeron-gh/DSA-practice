@@ -27,7 +27,7 @@ int f(int pos, int arr[], int n, bool taken)
 
     int a = f(pos + 1, arr, n, taken);
     
-    int b = arr[pos] + f(pos + 2, arr, n, pos == 0 ? true : taken);
+    int b = arr[pos] + f(pos + 2, arr, n, pos == false ? true : taken);
 
     return dp[pos][taken] = max(a, b);
 }
