@@ -32,6 +32,7 @@ int f(int i, int cw, int w, vector<int> &wt, vector<int> &val, vector<int> &t)
 }
 
 vector<int> ans;
+
 void recover(int i, int cw, int w, vector<int> &wt, vector<int> &val, vector<int> &t)
 {
     if (val.size() == i)
