@@ -2,3 +2,7 @@
 .cph
 garbage
 CLAUDE.md
+
+*.out
+*.exe
+SYSTEM-NOTES.md
