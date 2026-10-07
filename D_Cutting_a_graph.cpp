@@ -67,18 +67,25 @@ void solve() {
   }
 
   DSU dsu(n);
+  // we go backwards, so answers come out backwards: save them first
+  vector<string> ans;
   for (int i = k - 1; i >= 0; i--) {
     int foo = vec[i].second.first;
     int bar = vec[i].second.second;
     if (vec[i].first == "ask") {
       if (dsu.same(foo, bar)) {
-        cout << "YES" << endl;
+        ans.push_back("YES");
       } else {
-        cout << "NO" << endl;
+        ans.push_back("NO");
       }
     } else {
       dsu.unite(foo, bar);
     }
+  }
+
+  reverse(all(ans));
+  for (string &s : ans) {
+    cout << s << '\n';
   }
 }
 

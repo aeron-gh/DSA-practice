@@ -13,85 +13,62 @@ const int MOD = 1e9 + 7;
 const int INF = 1e9;
 const ll LINF = 1e18;
 
-// path compression possible with weight stored
+// weighted dsu: dist[x] = steps from x up to parent[x]
+// after root(x), parent[x] is the top boss, so dist[x] = number of bosses
 class dsu {
-  vector<ll> parent;
-  vector<ll> size;
-  stack<pair<ll, ll>> his;
+  vector<int> parent;
+  vector<int> dist;
 
 public:
-  int com;
-  dsu(ll n) {
+  dsu(int n) {
     parent.resize(n);
-    size.resize(n);
+    dist.resize(n);
 
     for (int i = 0; i < n; i++) {
       parent[i] = i;
-      size[i] = 1;
+      dist[i] = 0;
     }
-    com = n - 1;
   }
 
-  bool checksame(ll x, ll y) { return root(x) == root(y); }
-  int root(ll x) {
+  int root(int x) {
     if (parent[x] == x) {
       return x;
     }
-    return root(parent[x]);
+    int r = root(parent[x]);
+    // now dist[parent[x]] = steps from parent to top, so add it
+    dist[x] += dist[parent[x]];
+    parent[x] = r;
+    return r;
   }
 
-  void unite(ll x, ll y) {
-    x = root(x);
-    y = root(y);
-    if (size[x] > size[y]) {
-      swap(x, y);
-    }
-    his.push({y, x});
-    if (x == y) {
-      return;
-    }
-    parent[x] = y;
-    size[y] += size[x];
-    com--;
+  // a goes under b (both are top bosses of their groups)
+  void unite(int a, int b) {
+    parent[a] = b;
+    dist[a] = 1;
   }
 
-  void per() { his.push({-1, -1}); }
-
-  void rollback() {
-    while (!his.empty()) {
-      auto [y, x] = his.top();
-      his.pop();
-      if (x == -1 and y == -1) {
-        return;
-      }
-      if (x == y) {
-        continue;
-      }
-      parent[x] = x;
-      size[y] += size[x];
-      com++;
-    }
+  int bosses(int x) {
+    root(x);
+    return dist[x];
   }
 };
 
 void solve() {
-  ll n, m;
+  int n, m;
   cin >> n >> m;
-  dsu dsu(n + 1);
+  dsu d(n + 1);
 
   while (m--) {
-    string str;
-    ll a, b;
-    cin >> str;
-    if (str == "union") {
+    int type;
+    cin >> type;
+    if (type == 1) {
+      int a, b;
       cin >> a >> b;
-      dsu.unite(a, b);
-      cout << dsu.com << endl;
-    } else if (str == "persist") {
-      dsu.per();
+      d.unite(a, b);
     } else {
-      dsu.rollback();
-      cout << dsu.com << endl;
+      int c;
+      cin >> c;
+      cout << d.bosses(c) << '\n';
     }
   }
 }
