@@ -8,36 +8,24 @@ typedef pair<int, int> pii;
 
 #define all(x) (x).begin(), (x).end()
 #define sz(x) (int)(x).size()
-#define int long long
+
 const int MOD = 1e9 + 7;
 const int INF = 1e9;
 const ll LINF = 1e18;
 
 void solve() {
-  int a, b, n;
-  cin >> a >> b >> n;
-  int ans = 0;
-  for (int i = 0; i < n; i++) {
-    int no;
-    cin >> no;
-    if (no + b <= a) {
-      b += no;
-    } else {
-      if (b - no <= 0) {
-        ans += b;
-        ans--;
-      } else {
-        ans += no;
-      }
-      int foo = min(a, no + 1);
-      b = max(b, foo);
-    }
+  int n, k;
+  cin >> n >> k;
+  if (n % k != 0) {
+    cout << 1 << endl;
+    cout << n << endl;
+  } else {
+    cout << 2 << endl;
+    cout << n - (k + 1) << " " << k + 1 << endl;
   }
-  ans += b;
-  cout << ans << endl;
 }
 
-signed main() {
+int main() {
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 

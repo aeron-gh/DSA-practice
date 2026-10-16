@@ -16,6 +16,33 @@ const ll LINF = 1e18;
 void solve() {
   int n;
   cin >> n;
+  string str;
+  cin >> str;
+  int foo = 0;
+  int bar = 0;
+  for (int i = 0; i < n; i++) {
+    if (str[i] == '<') {
+      foo++;
+    } else {
+      bar = max(foo, bar);
+      foo = 0;
+    }
+  }
+  bar = max(foo, bar);
+
+  int fo = 0;
+  int ba = 0;
+  for (int i = 0; i < n; i++) {
+    if (str[i] == '>') {
+      fo++;
+    } else {
+      ba = max(fo, ba);
+      fo = 0;
+    }
+  }
+  ba = max(fo, ba);
+
+  cout << max(ba, bar) + 1 << endl;
 }
 
 int main() {
