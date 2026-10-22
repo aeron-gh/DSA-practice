@@ -16,6 +16,17 @@ const ll LINF = 1e18;
 void solve() {
   int n;
   cin >> n;
+  int ans = 0;
+  for (int i = 0; i < n - 1; i++) {
+    int a;
+    cin >> a;
+    ans += a;
+  }
+  if (ans == 0) {
+    cout << ans << endl;
+  } else {
+    cout << -ans << endl;
+  }
 }
 
 int main() {
